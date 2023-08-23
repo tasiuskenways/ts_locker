@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'Tasius Kenways'
 description 'Gudang Storage'
-version '1.0.0'
+version '1.2.0'
 
 client_scripts {
     '@PolyZone/client.lua',
@@ -18,6 +18,7 @@ shared_scripts {
     'config.lua',
     '@qb-core/shared/locale.lua',
     '@ox_lib/init.lua', -- OX_Lib, only line this in if you have ox_lib and are using them.
+    'locales/en.lua', -- English Locales
 }
 
 lua54 'yes'
