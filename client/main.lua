@@ -3,9 +3,9 @@ local QBCore = exports['qb-core']:GetCoreObject()
 function CreateTargetAndBlips()
     for k, v in pairs(Config.GudangStash) do
         local Gudang = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
-        SetBlipSprite (Gudang, 473)
+        SetBlipSprite(Gudang, 473)
         SetBlipDisplay(Gudang, 4)
-        SetBlipScale  (Gudang, 0.7)
+        SetBlipScale(Gudang, 0.7)
         SetBlipAsShortRange(Gudang, true)
         SetBlipColour(Gudang, 67)
         AddTextEntry(v.label, v.label)
@@ -23,9 +23,11 @@ function CreateTargetAndBlips()
                 options = {
                     {
                         type = "client",
-                        event = "gudang:client:openMainMenu",
                         icon = "fa fa-warehouse",
                         label = "Open Stash",
+                        action = function()
+                            TriggerEvent('gudang:client:openMainMenu', v.id)
+                        end,
                     }
                 },
                 distance = 2.5
@@ -73,14 +75,14 @@ AddEventHandler('gudang:client:openMainMenu', function(id)
                 end,
             },
             {
-				title = "Close Menu",
-				icon = "fas fa-times-circle",
-				onSelect = function()
-					lib.hideContext()
-				end,
-			},
+                title = "Close Menu",
+                icon = "fas fa-times-circle",
+                onSelect = function()
+                    lib.hideContext()
+                end,
+            },
         }
-    })    
+    })
 
     lib.registerContext({
         id = 'buy_storage_menu',
@@ -101,9 +103,11 @@ end)
 RegisterNetEvent('gudang:client:buyStorage')
 AddEventHandler('gudang:client:buyStorage', function(id)
     local input = lib.inputDialog('Warehouse Rental', {
-        { type = 'input',  label = 'Warehouse Name', default = 'Locker ' .. id,      disabled = true },
-        {type = 'input', label = 'Warehouse Price', default = '$ '..Config.Price..' Per Day', disabled = true},
-        {type = 'number', label = 'Day', description = 'How Many Days to Rent a Warehouse', default = 1, min = 1, required = true},
+        { type = 'input',  label = 'Warehouse Name',  default = 'Locker ' .. id,                         disabled = true },
+        { type = 'input',  label = 'Warehouse Price', default = '$ ' .. Config.Price .. ' Per Day',      disabled = true },
+        { type = 'number', label = 'Day',             description = 'How Many Days to Rent a Warehouse', default = 1,
+                                                                                                                             min = 1,
+                                                                                                                                      required = true },
     })
 
     local day = tonumber(input[3])
@@ -111,7 +115,7 @@ AddEventHandler('gudang:client:buyStorage', function(id)
 
     if day ~= nil then
         local input = lib.inputDialog('Are You Sure You Want to Rent a Warehouse?', {
-            {type = 'input', label = 'Total Price', default = '$ '..price, disabled = true},
+            { type = 'input', label = 'Total Price', default = '$ ' .. price, disabled = true },
         })
     end
     TriggerServerEvent('gudang:server:buyStorage', day, price, id)
@@ -123,8 +127,8 @@ AddEventHandler('gudang:client:openStorage', function(id)
         if ada then
             local cid = QBCore.Functions.GetPlayerData().citizenid
             if Config.Inventory == "qb-inventory" then
-                TriggerEvent("inventory:client:SetCurrentStash", "Lockers"..id .. cid)
-                TriggerServerEvent("inventory:server:OpenInventory", "stash", "Lockers"..id .. cid, {
+                TriggerEvent("inventory:client:SetCurrentStash", "Lockers" .. id .. cid)
+                TriggerServerEvent("inventory:server:OpenInventory", "stash", "Lockers" .. id .. cid, {
                     maxweight = Config.Weight,
                     slots = Config.Slot,
                 })
