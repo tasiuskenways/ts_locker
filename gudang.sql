@@ -14,11 +14,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Dumping database structure for qboxproject_d0aac6
-CREATE DATABASE IF NOT EXISTS `qboxproject_d0aac6` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
-USE `qboxproject_d0aac6`;
-
 -- Dumping structure for table qboxproject_d0aac6.gudang
 CREATE TABLE IF NOT EXISTS `gudang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
