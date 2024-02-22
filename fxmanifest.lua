@@ -1,28 +1,33 @@
 fx_version 'cerulean'
 game 'gta5'
-author 'Tasius Kenways'
-description 'Gudang Storage'
-version '1.2.0'
+author 'Tasius'
+
+version '2.0.0'
+
+shared_scripts {
+    '@ox_lib/init.lua',
+    'config.lua'
+}
 
 client_scripts {
-    '@PolyZone/client.lua',
-    'client/*.lua'
+    'client/*.lua',
+    '@qbx_core/modules/playerdata.lua'
 }
 
 server_scripts {
     'server/*.lua',
-    '@oxmysql/lib/MySQL.lua',
+    '@oxmysql/lib/MySQL.lua'
 }
 
-shared_scripts {
-    'config.lua',
-    '@qb-core/shared/locale.lua',
-    '@ox_lib/init.lua', -- OX_Lib, only line this in if you have ox_lib and are using them.
-    'locales/en.lua', -- English Locales
+files {
+    'data/*.lua',
+    'locales/*.json'
+}
+ox_lib "locale"
+
+dependencies {
+    'ox_lib',
 }
 
 lua54 'yes'
-
-dependencies { -- Make sure these are started before cdn-fuel in your server.cfg!
-    'ox_lib'
-}
+use_experimental_fxv2_oal 'yes'

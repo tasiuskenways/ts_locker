@@ -1,0 +1,14 @@
+{
+  "ts_locker:createlocker:cmd:help": "Create a new locker at your position (Admin Only)",
+  "ts_locker:lockerlist:cmd:help": "Manage locker list",
+  "ts_locker:title": "TS Locker",
+  "ts_locker:notify:notowned": "You Dont Have Locker Here or Its Already Expired",
+  "ts_locker:notify:mustfill_input": "You need to fill the inputs",
+  "ts_locker:input:rentStorage": "TS Locker | Rent %s",
+  "ts_locker:input:rentStorage:input1": "Price",
+  "ts_locker:input:rentStorage:input2": "How long you want to rent it for?",
+  "ts_locker:notify:successRent": "You have successfully rented a locker for $%s",
+  "ts_locker:notify:noMoney": "You dont have enough money",
+  "ts_locker:notify:failedSQL": "Something wrong with the system, please call admin for help",
+  "ts_locker:dialog:confirm": "Are you sure you want to rent this locker for $%s for %s days"
+}

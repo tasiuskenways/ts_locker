@@ -1,24 +1,12 @@
-Config = {}
+TS = {}
 
-Config.Inventory = "ox_inventory" -- "ox_inventory", "qb-inventory"
+TS.Lockers = require 'data.locker' -- DO NOT TOUCH THIS
+TS.BlipsIcon = 473
+TS.refreshTime = 30                --30 Minute (To Refresh Locker Owners And Autokick)
+TS.Framwork = 'qbx'
 
-Config.Target = "ox_target"       -- "ox_target", "qb-target
-
-Config.Price = 10
-
-Config.Slot = 200
-
-Config.Weight = 2500000
-
-Config.GudangStash = {
-    [1] = {
-        id = 'utama', -- Harus Uniqe
-        label = 'Gudang Utama',
-        coords = vector3(-19.16, -1439.2, 31.1)
-    },
-    [2] = {
-        id = 'pantai',
-        label = 'Gudang Pantai',
-        coords = vector3(-1607.623, -830.954, 10.078)
-    }
+TS.STATUS = { -- DO NOT TOUCH THIS
+    NO_MONEY = 1,
+    FAILED_SQL = 2,
+    SUCCESS = 3
 }
